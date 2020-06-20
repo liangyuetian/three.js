@@ -4,6 +4,8 @@
 
 // import './geometry/cubeGeometry.js' // 立方体
 
-import './geometry/planeGeometry.js' // 长方形
+// import './geometry/planeGeometry.js' // 长方形
+
+import './geometry/sphereGeometry.js' // 球体
 
 
