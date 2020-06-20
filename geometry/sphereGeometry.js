@@ -8,7 +8,7 @@ import {renderer, scene, camera, material} from '../scene.js'
 
 const sphere = new THREE.Mesh(
     // 半径为3，经度划分成8份，纬度划分成6份的球体
-    new THREE.SphereGeometry(3, 8, 6),
+    new THREE.SphereGeometry(3, 18, 12),
     material
 )
 

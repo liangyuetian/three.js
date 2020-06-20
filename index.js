@@ -6,6 +6,8 @@
 
 // import './geometry/planeGeometry.js' // 长方形
 
-import './geometry/sphereGeometry.js' // 球体
+// import './geometry/sphereGeometry.js' // 球体
+
+import './geometry/circleGeometry.js' // 圆形
 
 
