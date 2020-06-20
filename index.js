@@ -12,6 +12,8 @@
 
 // import './geometry/cylinderGeometry.js' // 圆柱体
 
-import './geometry/TetrahedronGeometry.js' // 多面体之正四面体、正八面体、正二十面体
+// import './geometry/TetrahedronGeometry.js' // 多面体之正四面体、正八面体、正二十面体
+
+import './geometry/torusGeometry.js' // 圆环
 
 
