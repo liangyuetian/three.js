@@ -8,6 +8,8 @@
 
 // import './geometry/sphereGeometry.js' // 球体
 
-import './geometry/circleGeometry.js' // 圆形
+// import './geometry/circleGeometry.js' // 圆形
+
+import './geometry/cylinderGeometry.js' // 圆柱体
 
 
