@@ -32,7 +32,8 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));
 scene.add(camera);
 
 // 原点处创建一个边长为1的正方体，为了和透视效果做对比，这里我们使用wireframe而不是实心的材质，以便看到正方体后方的边
-const cube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1),
+const cube = new THREE.Mesh(
+    new THREE.CubeGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial({
         color: 0xff0000,
         wireframe: true
