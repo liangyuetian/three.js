@@ -1,0 +1,19 @@
+{
+  "name": "thress.js",
+  "version": "1.0.0",
+  "description": "看 Thress.js 入门指南",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liangyuetian/three.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liangyuetian/three.js/issues"
+  },
+  "homepage": "https://github.com/liangyuetian/three.js#readme"
+}
