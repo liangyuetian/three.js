@@ -10,6 +10,8 @@
 
 // import './geometry/circleGeometry.js' // 圆形
 
-import './geometry/cylinderGeometry.js' // 圆柱体
+// import './geometry/cylinderGeometry.js' // 圆柱体
+
+import './geometry/TetrahedronGeometry.js' // 多面体之正四面体、正八面体、正二十面体
 
 
