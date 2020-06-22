@@ -16,6 +16,7 @@
 
 // import './geometry/torusGeometry.js' // 圆环
 
-import './geometry/torusKnotGeometry.js' // 圆环结
+// import './geometry/torusKnotGeometry.js' // 圆环结
 
+import './geometry/geometry.js'
 
