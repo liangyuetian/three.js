@@ -1,6 +1,6 @@
 // 自定义形状
 import {renderer, scene, camera, material} from '../scene.js'
-
+window.stat.begin()
 // 初始化几何形状
 const geometry = new THREE.Geometry();
 
@@ -45,3 +45,4 @@ const sphere = new THREE.Mesh(
 scene.add(sphere)
 
 renderer.render(scene, camera)
+window.stat.end()
