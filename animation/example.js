@@ -1,46 +1,105 @@
+var requestAnimationFrame = window.requestAnimationFrame
+    || window.mozRequestAnimationFrame
+    || window.webkitRequestAnimationFrame
+    || window.msRequestAnimationFrame;
+window.requestAnimationFrame = requestAnimationFrame;
+
 var scene = null;
 var camera = null;
 var renderer = null;
 
-var mesh = null;
 var id = null;
 
+var stat = null;
+
+var ballMesh = null;
+var ballRadius = 0.5;
+var isMoving = false;
+var maxHeight = 5;
+
+var v = 0;
+var a = -0.01;
+
 function init() {
+    stat = new Stats();
+    stat.domElement.style.position = 'absolute';
+    stat.domElement.style.right = '0px';
+    stat.domElement.style.top = '0px';
+    document.body.appendChild(stat.domElement);
+
     renderer = new THREE.WebGLRenderer({
         canvas: document.getElementById('mainCanvas')
     });
-    renderer.setClearColor(0x000000);
     scene = new THREE.Scene();
 
     camera = new THREE.OrthographicCamera(-5, 5, 3.75, -3.75, 0.1, 100);
-    camera.position.set(5, 5, 20);
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    camera.position.set(5, 10, 20);
+    camera.lookAt(new THREE.Vector3(0, 3, 0));
     scene.add(camera);
 
-    mesh = new THREE.Mesh(new THREE.CubeGeometry(1, 2, 3),
+    // ball
+    ballMesh = new THREE.Mesh(new THREE.SphereGeometry(ballRadius, 16, 8),
         new THREE.MeshLambertMaterial({
             color: 0xffff00
         }));
-    scene.add(mesh);
+    ballMesh.position.y = ballRadius;
+    scene.add(ballMesh);
+
+    // plane
+    var texture = THREE.ImageUtils.loadTexture('/three.js/static/img/8bffa97ce8e1dbbd7c580d62b1a5b3239d16776b.png@2000w_1e.webp', {}, function() {
+        renderer.render(scene, camera);
+    });
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(4, 4);
+    var plane = new THREE.Mesh(new THREE.PlaneGeometry(5, 5),
+        new THREE.MeshLambertMaterial({map: texture}));
+    plane.rotation.x = -Math.PI / 2;
+    scene.add(plane);
 
     var light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(20, 10, 5);
+    light.position.set(10, 10, 15);
     scene.add(light);
 
-    id = setInterval(draw, 20);
+    id = requestAnimationFrame(draw);
 }
 
 function draw() {
     stat.begin();
-    mesh.rotation.y = (mesh.rotation.y + 0.01) % (Math.PI * 2);
+
+    if (isMoving) {
+        ballMesh.position.y += v;
+        v += a;
+
+        if (ballMesh.position.y <= ballRadius) {
+            // hit plane
+            v = -v * 0.9;
+        }
+
+        if (Math.abs(v) < 0.001) {
+            // stop moving
+            isMoving = false;
+            ballMesh.position.y = ballRadius;
+        }
+    }
+
     renderer.render(scene, camera);
+
+    id = requestAnimationFrame(draw);
+
     stat.end();
 }
 
 function stop() {
     if (id !== null) {
-        clearInterval(id);
+        cancelAnimationFrame(id);
         id = null;
     }
 }
+
+function drop() {
+    isMoving = true;
+    ballMesh.position.y = maxHeight;
+    v = 0;
+}
 init()
+drop()
