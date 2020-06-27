@@ -55,6 +55,7 @@ function init() {
         new THREE.MeshLambertMaterial({map: texture}));
     plane.rotation.x = -Math.PI / 2;
     scene.add(plane);
+    
 
     var light = new THREE.DirectionalLight(0xffffff);
     light.position.set(10, 10, 15);
